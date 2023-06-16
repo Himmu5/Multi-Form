@@ -1,9 +1,9 @@
-import { FC, InputHTMLAttributes } from "react";
+import { FC, InputHTMLAttributes, memo } from "react";
 type P = {
   children: string;
-  extraClass: string;
-  touch: boolean;
-  error: string;
+  extraClass?: string;
+  touch?: boolean;
+  error?: string;
 } & InputHTMLAttributes<HTMLInputElement>;
 
 const Input: FC<P> = ({
@@ -14,7 +14,7 @@ const Input: FC<P> = ({
   touch,
   ...props
 }) => {
-  console.log("Error ," + error);
+    
   return (
     <div className="py-2 flex flex-col ">
       <label
@@ -36,4 +36,4 @@ const Input: FC<P> = ({
     </div>
   );
 };
-export default Input;
+export default memo(Input);

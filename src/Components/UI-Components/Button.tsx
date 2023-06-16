@@ -1,10 +1,10 @@
-import { ButtonHTMLAttributes, FC } from "react";
+import { ButtonHTMLAttributes, FC, memo } from "react";
 type P = {
   mode: "primary" | "secondary";
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button: FC<P> = ({ mode, children, ...rest }) => {
-  let styleClasses = "";
+  let styleClasses = ""
   if (mode === "primary") {
     styleClasses = " bg-indigo-500 hover:bg-indigo-600 text-white ";
   }
@@ -15,4 +15,4 @@ const Button: FC<P> = ({ mode, children, ...rest }) => {
     </button>
   );
 };
-export default Button;
+export default memo(Button);

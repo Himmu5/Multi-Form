@@ -1,26 +1,34 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import Input from "../UI-Components/Input";
 import Button from "../UI-Components/Button";
-import { FormikProps, withFormik } from "formik";
+import { FormikBag, FormikProps, withFormik } from "formik";
 import * as Yup from "yup";
-import { loginUser } from "../../Apis/Auth";
+import { ConnectedProps, connect } from "react-redux";
+import { AuthUser } from "../../Redux/slices/Auth";
+import Reset from "./Reset";
+import { Link } from "react-router-dom";
 
-type P = {} & FormikProps<I>;
-const SignIn: FC<P> = ({ values, handleChange , handleSubmit , handleBlur , touched , errors }) => {
+type P = {} & FormikProps<I> & ReduxProps;
 
-    useEffect(()=>{
-        loginUser()
-    },[])   
-
-
+const SignIn: FC<P> = ({
+  values,
+  handleChange,
+  handleSubmit,
+  handleBlur,
+  touched,
+  errors,
+}) => {
   return (
-    <div className="min-h-screen w-full flex justify-center items-center bg-gray-50 ">
-      <form className=" rounded-md bg-white p-10 shadow-xl space-y-2 " onSubmit={handleSubmit}>
+    <div className="min-h-screen w-full flex justify-center items-center bg-gray-50  ">
+      <form
+        className=" rounded-md bg-white p-10 shadow-xl space-y-2 max-w-md w-full flex flex-col "
+        onSubmit={handleSubmit}
+      >
         <h1 className="py-4 text-xl">Sign in with email/password</h1>
 
         <Input
           type="email"
-          name={'email'}
+          name={"email"}
           touch={touched.email!}
           value={values.email}
           onBlur={handleBlur}
@@ -48,6 +56,10 @@ const SignIn: FC<P> = ({ values, handleChange , handleSubmit , handleBlur , touc
         <Button type="submit" mode="primary">
           Login with your Account
         </Button>
+
+        <Link to={"/Reset"} className="text-xs underline ">
+          Forget your password
+        </Link>
       </form>
     </div>
   );
@@ -64,8 +76,8 @@ const schema = Yup.object().shape({
   password: Yup.string().min(8).required(),
 });
 
-function submit(values:I) {
-    console.log(values , " values ");
+function submit(values: I, bag: FormikBag<P, I>) {
+  bag.props.AuthUser(values);
 }
 
 const HOC = withFormik({
@@ -74,4 +86,12 @@ const HOC = withFormik({
   validationSchema: schema,
 });
 
-export default HOC(SignIn);
+const mapDispatchToProps = {
+  AuthUser,
+};
+
+const connector = connect(null, mapDispatchToProps);
+
+type ReduxProps = ConnectedProps<typeof connector>;
+
+export default connector(HOC(SignIn)) as any;
