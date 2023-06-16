@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import { loginUser } from "../../Apis/Auth";
 
 type P = {} & FormikProps<I>;
-const SignIn: FC<P> = ({ values, handleChange , handleSubmit }) => {
+const SignIn: FC<P> = ({ values, handleChange , handleSubmit , handleBlur , touched , errors }) => {
 
     useEffect(()=>{
         loginUser()
@@ -21,7 +21,10 @@ const SignIn: FC<P> = ({ values, handleChange , handleSubmit }) => {
         <Input
           type="email"
           name={'email'}
+          touch={touched.email!}
           value={values.email}
+          onBlur={handleBlur}
+          error={errors.email!}
           onChange={handleChange}
           extraClass="border border-gray-400 "
           placeholder="test@test.com"
@@ -30,7 +33,10 @@ const SignIn: FC<P> = ({ values, handleChange , handleSubmit }) => {
         </Input>
         <Input
           type="password"
+          touch={touched.password!}
+          onBlur={handleBlur}
           name={"password"}
+          error={errors.password!}
           value={values.password}
           onChange={handleChange}
           extraClass="border border-gray-400 "
@@ -54,8 +60,8 @@ const initialValues = {
 type I = typeof initialValues;
 
 const schema = Yup.object().shape({
-  email: Yup.string().email(),
-  password: Yup.string().min(8),
+  email: Yup.string().email().required(),
+  password: Yup.string().min(8).required(),
 });
 
 function submit(values:I) {
