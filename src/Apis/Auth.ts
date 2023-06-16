@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const loginUser = () => {
   return axios
-    .post("https://x8ki-letl-twmt.n7.xano.io/api:XooRuQbs/auth/login", {
+    .post(import.meta.env.VITE_BASE_URL+"/auth/login", {
       email: "levitation@levitation.in",
       password: "levitation",
     })

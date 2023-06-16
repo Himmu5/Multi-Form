@@ -1,11 +1,17 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import Input from "../UI-Components/Input";
 import Button from "../UI-Components/Button";
 import { FormikProps, withFormik } from "formik";
 import * as Yup from "yup";
+import { loginUser } from "../../Apis/Auth";
 
 type P = {} & FormikProps<I>;
 const SignIn: FC<P> = ({ values, handleChange , handleSubmit }) => {
+
+    useEffect(()=>{
+        loginUser()
+    },[])   
+
 
   return (
     <div className="min-h-screen w-full flex justify-center items-center bg-gray-50 ">
