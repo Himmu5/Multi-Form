@@ -9,8 +9,17 @@ import BasicDetails from "./Components/FormProgress/BasicDetail";
 import AddressForm from "./Components/FormProgress/AddressForm";
 import SingleFileUpload from "./Components/FormProgress/SingleFileUpload";
 import MuliFileUpload from "./Components/FormProgress/MultiFileUpload";
+import { useEffect } from "react";
 
 function App() {
+
+  useEffect(()=>{
+    navigator.geolocation.getCurrentPosition(function(position) {
+      console.log("Latitude is :", position.coords.latitude);
+      console.log("Longitude is :", position.coords.longitude);
+    });
+  },[])
+  
   return (
     <div className="relative m-2">
       <Alert />
