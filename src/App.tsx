@@ -4,10 +4,12 @@ import Home from "./Components/Pages/Home";
 import AuthRoute from "./Routes/AuthRoute";
 import UserRoute from "./Routes/UserRoute";
 import Reset from "./Components/Pages/Reset";
+import Alert from "./Components/UI-Components/Alert";
 
 function App() {
   return (
-    <div>
+    <div className="relative ">
+      <Alert />
       <Routes>
         <Route
           path="/"

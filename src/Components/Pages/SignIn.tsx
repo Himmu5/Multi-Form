@@ -47,7 +47,7 @@ const SignIn: FC<P> = ({
           error={errors.password!}
           value={values.password}
           onChange={handleChange}
-          extraClass="border border-gray-400 "
+          extraClass="border border-gray-400 font-bold text-xl placeholder:text-2xl "
           placeholder="......"
         >
           Your password
