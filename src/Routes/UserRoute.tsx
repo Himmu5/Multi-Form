@@ -2,7 +2,7 @@ import { FC, ReactNode } from "react";
 import { ConnectedProps, connect } from "react-redux";
 import { State } from "../Redux/store";
 import { tokenSelector } from "../Redux/selector/AuthState";
-import Home from "../Components/Pages/Home";
+import { Navigate } from "react-router-dom";
 
 type P = {
   children: ReactNode;
@@ -10,7 +10,7 @@ type P = {
 const UserRoute: FC<P> = ({ token, children }) => {
     
   if (token.length > 0) {
-    return <Home />;
+    return <Navigate to={"/"} />
   }
 
   return <div>{children}</div>;

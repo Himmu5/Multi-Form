@@ -5,7 +5,7 @@ import { FormikBag, FormikProps, withFormik } from "formik";
 import * as Yup from "yup";
 import { ConnectedProps, connect } from "react-redux";
 import { AuthUser } from "../../Redux/slices/Auth";
-import Reset from "./Reset";
+
 import { Link } from "react-router-dom";
 
 type P = {} & FormikProps<I> & ReduxProps;
@@ -19,9 +19,9 @@ const SignIn: FC<P> = ({
   errors,
 }) => {
   return (
-    <div className="min-h-screen w-full flex justify-center items-center bg-gray-50  ">
+    <div className="min-h-screen w-full flex justify-center items-center bg-gray-50  border rounded-md p-2">
       <form
-        className=" rounded-md bg-white p-10 shadow-xl space-y-2 max-w-md w-full flex flex-col "
+        className=" rounded-md bg-white p-5 sm:p-10 shadow-xl space-y-2 max-w-md w-full flex flex-col "
         onSubmit={handleSubmit}
       >
         <h1 className="py-4 text-xl">Sign in with email/password</h1>
@@ -37,7 +37,7 @@ const SignIn: FC<P> = ({
           extraClass="border border-gray-400 "
           placeholder="test@test.com"
         >
-          Your email
+          email
         </Input>
         <Input
           type="password"
@@ -50,7 +50,7 @@ const SignIn: FC<P> = ({
           extraClass="border border-gray-400 font-bold text-xl placeholder:text-2xl "
           placeholder="......"
         >
-          Your password
+          password
         </Input>
 
         <Button type="submit" mode="primary">

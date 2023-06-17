@@ -1,16 +1,45 @@
-import { FC } from "react";
-type P = {};
-const Alert: FC<P> = () => {
+import { FC, useEffect } from "react";
+import { ConnectedProps, connect } from "react-redux";
+import { State } from "../../Redux/store";
+import { alertSelector } from "../../Redux/selector/AuthState";
+import { removeAlert } from "../../Redux/slices/Auth";
+
+type P = {} & ReduxProps;
+
+const Alert: FC<P> = ({ alert, removeAlert }) => {
+  if (alert.message.length === 0) {
+    return <div></div>;
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      removeAlert();
+    }, 5 * 1000);
+  }, []);
+
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center mx-4 my-1 ">
       <div
-        className="absolute max-w-4xl mx-auto w-full z-5 p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-100 shadow-xl dark:bg-gray-800 dark:text-green-400"
+        className="absolute  z-5 p-4 w-full max-w-4xl mx-3 mb-4 text-sm text-green-800 rounded-lg bg-green-100 shadow-xl dark:bg-gray-800 dark:text-green-400 flex gap-2"
         role="alert"
       >
-        <span className="font-medium">Success alert!</span> Change a few things
-        up and try submitting again.
+        <span className="font-medium">
+          {" "}
+          {alert.type === "Success" ? "Success alert!" : " error alert!  "}
+        </span>
+        {alert.message}
       </div>
     </div>
   );
 };
-export default Alert;
+
+const mapStateToProps = (state: State) => ({ alert: alertSelector(state) });
+const mapDispatchToProps = {
+  removeAlert,
+};
+
+const connector = connect(mapStateToProps, mapDispatchToProps);
+
+type ReduxProps = ConnectedProps<typeof connector>;
+
+export default connector(Alert);

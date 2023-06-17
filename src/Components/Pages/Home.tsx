@@ -1,6 +1,11 @@
 import { FC } from "react";
+
 type P = {};
 const Home: FC<P> = () => {
-  return <div>File uplaoding saction</div>;
+  return (
+    <div className="min-h-screen ">
+      
+    </div>
+  );
 };
 export default Home;

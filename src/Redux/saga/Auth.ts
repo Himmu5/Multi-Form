@@ -1,10 +1,14 @@
 import { call, put } from "redux-saga/effects";
 import { loginUser } from "../../Apis/Auth";
 import { AnyAction } from "@reduxjs/toolkit";
-import { savingToken } from "../slices/Auth";
+import { savingToken, setAlert } from "../slices/Auth";
 
 export function* AuthSaga(action: AnyAction): Generator<any, any, any> {
   const data = yield call(loginUser, action.payload);
-
-  yield put(savingToken(data));
+  if (data.authToken) {
+    yield put(savingToken(data));
+    yield put(setAlert({ message: "Logged In successfully", type: "Success" }));
+  } else {
+    yield put(setAlert({ message: data.message, type: "Error" }));
+  }
 }

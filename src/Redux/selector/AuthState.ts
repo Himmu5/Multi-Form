@@ -8,3 +8,7 @@ function AuthStateSelector (state:State){
 export const tokenSelector = createSelector(AuthStateSelector , (AuthState)=>{
     return AuthState.token;
 });
+
+export const alertSelector = createSelector(AuthStateSelector , (AuthState)=>{
+    return AuthState.alert;
+});
