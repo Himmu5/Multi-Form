@@ -4,10 +4,10 @@ import AuthRoute from "./Routes/AuthRoute";
 import UserRoute from "./Routes/UserRoute";
 import Reset from "./Components/Pages/Reset";
 import Alert from "./Components/UI-Components/Alert";
-import Progressbar from "./Components/UI-Components/Progressbar";
-import BasicDetails from "./Components/UI-Components/BasicDetail";
-import AddressForm from "./Components/UI-Components/AddressForm";
-import SingleFileUpload from "./Components/UI-Components/SingleFileUpload";
+import Progressbar from "./Components/FormProgress/Progressbar";
+import BasicDetails from "./Components/FormProgress/BasicDetail";
+import AddressForm from "./Components/FormProgress/AddressForm";
+import SingleFileUpload from "./Components/FormProgress/SingleFileUpload";
 
 function App() {
   return (
@@ -38,7 +38,6 @@ function App() {
           <Route path="/" element={<BasicDetails />} />
           <Route path="/AddressForm" element={<AddressForm />} />
           <Route path="/SingleFileUploader" element={<SingleFileUpload />} />
-
 
       </Routes>
       

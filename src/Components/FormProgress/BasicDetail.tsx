@@ -1,8 +1,8 @@
 import { FC } from "react";
-import Input from "./Input";
-import Button from "./Button";
+import Input from "../UI-Components/Input";
+import Button from "../UI-Components/Button";
 import { Link } from "react-router-dom";
-import PhoneInputValidation from "./PhoneInputValidation";
+import PhoneInputValidation from "../UI-Components/PhoneInputValidation";
 type P = {};
 const BasicDetails: FC<P> = () => {
   return (

@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import FileUploader from "./FileUploader";
-import Button from "./Button";
+import Button from "../UI-Components/Button";
 type P = {};
 const SingleFileUpload: FC<P> = () => {
   const [file, setFile] = useState<File>();

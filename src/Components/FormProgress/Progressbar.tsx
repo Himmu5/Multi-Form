@@ -1,5 +1,5 @@
 import { FC } from "react";
-import ProgressCount from "./ProgressCount";
+import ProgressCount from "../UI-Components/ProgressCount";
 type P = {};
 const Progressbar: FC<P> = () => {
   return (
