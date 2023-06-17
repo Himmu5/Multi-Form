@@ -8,6 +8,7 @@ import Progressbar from "./Components/FormProgress/Progressbar";
 import BasicDetails from "./Components/FormProgress/BasicDetail";
 import AddressForm from "./Components/FormProgress/AddressForm";
 import SingleFileUpload from "./Components/FormProgress/SingleFileUpload";
+import MuliFileUpload from "./Components/FormProgress/MultiFileUpload";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="/" element={<BasicDetails />} />
           <Route path="/AddressForm" element={<AddressForm />} />
           <Route path="/SingleFileUploader" element={<SingleFileUpload />} />
+          <Route path="/MultiFileUploader" element={<MuliFileUpload />} />
 
       </Routes>
       
