@@ -2,7 +2,7 @@ import { FC } from "react";
 
 type P = {
   storeFile:(f:File)=>void
-};
+} 
 
 const FileUploader: FC<P> = ({ storeFile }) => {
   return (

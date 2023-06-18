@@ -7,14 +7,14 @@ import { removeAlert } from "../../Redux/slices/Auth";
 type P = {} & ReduxProps;
 
 const Alert: FC<P> = ({ alert, removeAlert }) => {
-  if (alert.message.length === 0) {
+  if (alert.message?.length === 0) {
     return <div></div>;
   }
 
   useEffect(() => {
     setTimeout(() => {
       removeAlert();
-    }, 5 * 1000);
+    }, 3 * 1000);
   }, []);
 
   return (
@@ -24,7 +24,6 @@ const Alert: FC<P> = ({ alert, removeAlert }) => {
         role="alert"
       >
         <span className="font-medium">
-          {" "}
           {alert.type === "Success" ? "Success alert!" : " error alert!  "}
         </span>
         {alert.message}

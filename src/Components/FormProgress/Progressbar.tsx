@@ -1,6 +1,8 @@
 import { FC } from "react";
-import ProgressCount from "../UI-Components/ProgressCount";
+import PageCountMapper from "../UI-Components/PageCountMapper";
+
 type P = {};
+
 const Progressbar: FC<P> = () => {
   return (
     <div className="flex pt-20 text-gray-600 w-full">
@@ -8,20 +10,7 @@ const Progressbar: FC<P> = () => {
         <div className="flex pb-3 px-4">
           <div className="flex-1"></div>
 
-          <div className="flex-1">
-            <div className="w-10 h-10 bg-indigo-500 text-white mx-auto rounded-full text-lg border-2 flex items-center">
-              <span className=" text-center w-full">
-                <i className="fa fa-check w-full fill-current ">1</i>
-              </span>
-            </div>
-          </div>
-          
-          <ProgressCount progress={100} count={2} />
-
-          <ProgressCount progress={100} count={3} />
-
-          <ProgressCount progress={20} count={4} />
-          <ProgressCount progress={0} count={5} />
+          <PageCountMapper />
 
           <div className="flex-1"></div>
         </div>
@@ -40,4 +29,5 @@ const Progressbar: FC<P> = () => {
     </div>
   );
 };
+
 export default Progressbar;

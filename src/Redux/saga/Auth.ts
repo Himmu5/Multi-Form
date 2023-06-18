@@ -12,6 +12,6 @@ export function* AuthSaga(action: AnyAction): Generator<any, any, any> {
     yield put(savingToken(data));
     yield put(setAlert({ message: "Logged In successfully", type: "Success" }));
   } else {
-    yield put(setAlert({ message: data.message, type: "Error" }));
+    yield put(setAlert({ message: data?.message, type: "Error" }));
   }
 }

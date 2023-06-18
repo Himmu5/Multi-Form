@@ -17,3 +17,10 @@ export const isSavedBasicDetails = createSelector(getProgressState , (getProgres
 export const isSavedAddresses = createSelector(getProgressState , (getProgress)=>{
     return getProgress.addressDetails.save;
 })
+export const isFileSaved = createSelector(getProgressState , (getProgress)=>{
+    return getProgress.singleFileUpload.save;
+})
+
+export const pageSelector = createSelector(getProgressState , (getProgress)=>{
+    return getProgress.currentPage;
+})  

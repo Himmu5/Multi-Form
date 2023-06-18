@@ -12,6 +12,7 @@ const initialState = {
     pincode: "",
     save : false
   },
+  singleFileUpload : { save : false , file : "" },
   currentPage : 1
 };
 type State = typeof initialState;
@@ -23,8 +24,14 @@ const progressSlice = createSlice({
     selectPage : pageSelector,
     storeBasicDetails: storeBasiceInfo,
     saveaddressDetails: storeAddressInfo,
+    saveSingleFile : storeSingleFile
   },
 });
+
+function storeSingleFile(state :State , action:PayloadAction<string>) {
+  state.singleFileUpload.file = action.payload;
+  state.singleFileUpload.save = true;
+}
 
 function pageSelector(state : State , action:PayloadAction<number>){
   state.currentPage = action.payload;
@@ -52,5 +59,5 @@ function storeBasiceInfo(
   state.BasicDetails.save = true;
 }
 
-export const { selectPage , storeBasicDetails , saveaddressDetails} = progressSlice.actions;
+export const { selectPage , storeBasicDetails , saveaddressDetails , saveSingleFile} = progressSlice.actions;
 export const progressReducer = progressSlice.reducer;
