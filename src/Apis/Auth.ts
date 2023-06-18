@@ -6,6 +6,6 @@ export const loginUser = (values: { email: string; password: string }) => {
     .then((res) => {
       return res.data;
     }).catch((err)=>{
-      return err.response.data;
+      return err.response?.data || undefined ;
     })
 };

@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { rootSaga, sagaMiddleware } from "./saga";
 import { authReducer } from "./slices/Auth";
+import { progressReducer } from "./slices/Progress";
 
 const store = configureStore({
   reducer: {
     authReducer,
+    progressReducer,
   },
   middleware: [sagaMiddleware],
 });

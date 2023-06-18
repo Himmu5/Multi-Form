@@ -15,7 +15,7 @@ const Progressbar: FC<P> = () => {
               </span>
             </div>
           </div>
-
+          
           <ProgressCount progress={100} count={2} />
 
           <ProgressCount progress={100} count={3} />

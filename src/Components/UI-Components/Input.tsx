@@ -18,10 +18,11 @@ const Input: FC<P> = ({
     <div className="py-2 flex flex-col w-full">
       <label
         htmlFor={type}
-        className="block mb-2 text-sm font-medium text-gray-900 dark:text-white "
+        className="sr-only relative  block mb-2 text-sm font-medium text-gray-900 dark:text-white "
       >
         Your {children}
       </label>
+      {touch && error && <div className="absolute text-sm my-1 -mt-3 text-red-500 ">{error}</div>}
       <input
         {...props}
         id={type}
